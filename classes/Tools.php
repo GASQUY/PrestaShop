@@ -2275,7 +2275,7 @@ exit;
 		}
 	}
 
-	public static function enableCache($level = 1, Context $context = null)
+	public static function enableCache($level = 1, Context $context = null, $times = 31536000)
 	{
 		if (!$context)
 			$context = Context::getContext();
@@ -2288,7 +2288,7 @@ exit;
 		self::$_caching = (int)$smarty->caching;
 		$smarty->force_compile = 0;
 		$smarty->caching = (int)$level;
-		$smarty->cache_lifetime = 31536000; // 1 Year
+		$smarty->cache_lifetime = (int)$times; // 1 Year
 	}
 
 	public static function restoreCacheSettings(Context $context = null)
